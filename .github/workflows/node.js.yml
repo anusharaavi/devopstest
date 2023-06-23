@@ -40,15 +40,13 @@ jobs:
       - run: npm run build
         working-directory: ./codebase/rdicidr-0.1.0/
         
-      - name: Set pipeline status
-        id: set_status
+      - name: Check CI Pipeline Status
         run: |
-          # Set the pipeline status based on the success or failure condition
           if [ $? -eq 0 ]; then
-            echo "::set-output name=pipeline_status::success"
+            echo "CI pipeline passed"
           else
-            echo "::set-output name=pipeline_status::failure"
+            echo "CI pipeline failed"
+            exit 1
           fi
-        
         
       
