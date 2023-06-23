@@ -78,7 +78,7 @@ jobs:
       
       - name: Scan Docker image on ECR
         run: |
-          aws ecr start-image-scan --repository-name github_actions_images imageTag=latest --region us-east1
+          aws ecr start-image-scan --repository-name github_actions_images --image-id 006678164789.dkr.ecr.us-east-1.amazonaws.com/github_actions_images:latest imageTag=latest --region us-east1
           
               
  
