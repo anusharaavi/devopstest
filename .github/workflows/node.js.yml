@@ -55,16 +55,19 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Login to Amazon ECR
-        uses: aws-actions/amazon-ecr-login@v1
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
         with:
-          registry: github_actions_images
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: 'us-east-1'
+
+      - name: Login to Amazon ECR
+        uses: aws-actions/amazon-ecr-login@v1
 
       - name: Build and Push Docker image
         env:
-          ECR_REGISTRY: github_actions_images
+          ECR_REGISTRY: '006678164789.dkr.ecr.us-east-1.amazonaws.com/github_actions_images'
           IMAGE_TAG: latest
         run: |
           docker build -t $ECR_REGISTRY/my-docker-image:$IMAGE_TAG .
