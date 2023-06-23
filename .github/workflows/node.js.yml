@@ -48,8 +48,13 @@ jobs:
             echo "CI pipeline failed"
             exit 1
           fi
+      - name: Archive artifacts
+        run: |
+          zip -r artifacts.zip ./codebase/rdicidr-0.1.0/
+          mv artifacts.zip ${{ github.workspace }}/artifacts.zip
+
       - name: Store artifacts
         uses: actions/upload-artifact@v2
         with:
           name: built-files
-          path: ./codebase/rdicidr-0.1.0/     
+          path: ${{ github.workspace }}/artifacts.zip   
