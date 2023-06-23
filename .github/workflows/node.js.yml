@@ -18,21 +18,29 @@ jobs:
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
-    - uses: actions/checkout@v3
-      with:
-        node-version: 15.x
-        npm-version: 7.x
-    - run: npm ci
-      working-directory: ./codebase/rdicidr-0.1.0/
-    - run: npm run 
-      working-directory: ./codebase/rdicidr-0.1.0/
-    - run: npm install
-      working-directory: ./codebase/rdicidr-0.1.0/
-    - run: npm run lint
-      working-directory: ./codebase/rdicidr-0.1.0/
-    - run: npm run prettier
-      working-directory: ./codebase/rdicidr-0.1.0/
-    - run: npm CI=true run test
-      working-directory: ./codebase/rdicidr-0.1.0/
-    - run: npm run build
-      working-directory: ./codebase/rdicidr-0.1.0/
+      - uses: actions/checkout@v3
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+         node-version: 14.x
+         npm-version: 7.x
+
+      - run: npm ci
+        working-directory: ./codebase/rdicidr-0.1.0/
+
+  # Rest of your workflow steps...
+
+      - run: npm ci
+        working-directory: ./codebase/rdicidr-0.1.0/
+      - run: npm run 
+        working-directory: ./codebase/rdicidr-0.1.0/
+      - run: npm install
+        working-directory: ./codebase/rdicidr-0.1.0/
+      - run: npm run lint
+        working-directory: ./codebase/rdicidr-0.1.0/
+      - run: npm run prettier
+        working-directory: ./codebase/rdicidr-0.1.0/
+      - run: npm CI=true run test
+        working-directory: ./codebase/rdicidr-0.1.0/
+      - run: npm run build
+        working-directory: ./codebase/rdicidr-0.1.0/
