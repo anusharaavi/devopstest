@@ -44,7 +44,7 @@ jobs:
         id: set_status
         run: |
           # Set the pipeline status based on the success or failure condition
-          if [ ${{ success() }} == 'true' ]; then
+          if [ $? -eq 0 ]; then
             echo "::set-output name=pipeline_status::success"
           else
             echo "::set-output name=pipeline_status::failure"
