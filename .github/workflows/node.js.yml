@@ -25,8 +25,7 @@ jobs:
          node-version: 15.x
          npm-version: 7.x.X
 
-      - run: npm ci
-        working-directory: ./codebase/rdicidr-0.1.0/
+      
 
   # Rest of your workflow steps...
 
