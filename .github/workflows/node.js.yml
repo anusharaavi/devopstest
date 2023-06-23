@@ -8,10 +8,9 @@ on:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
-
 jobs:
   build:
-
+  
     runs-on: ubuntu-latest
    # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
     steps:
@@ -40,12 +39,6 @@ jobs:
         working-directory: ./codebase/rdicidr-0.1.0/
       - run: npm run build
         working-directory: ./codebase/rdicidr-0.1.0/
-      - name: Check CI Pipeline Status
-        run: |
-          if [ $? -eq 0 ]; then
-            echo "CI pipeline passed"
-          else
-            echo "CI pipeline failed"
-            exit 1
-          fi
+        
+        
       
