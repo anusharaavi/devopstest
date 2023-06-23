@@ -48,9 +48,4 @@ jobs:
             echo "CI pipeline failed"
             exit 1
           fi
-      - name: Store artifacts
-        uses: actions/upload-artifact@v2
-        with:
-           name: built-files
-           path: ./dist
-      
+            
