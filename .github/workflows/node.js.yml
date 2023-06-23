@@ -48,22 +48,27 @@ jobs:
             echo "CI pipeline failed"
             exit 1
           fi
+  
   build-and-push:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - uses: docker://ghcr.io/kciter/aws-ecr-action:latest
-      
-        export AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID}}
-        export SECRET_ACCESS_KEY= ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-      with:  
-        ACCOUNT_ID: ${{ secrets.AWS_ACCOUNT_ID }}
-        repo: github_actions_images
-        region: us-east-1
-        tags: latest,${{ github.sha }}
-        create_repo: true
-        image_scanning_configuration: true
-        
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Login to Amazon ECR
+        uses: aws-actions/amazon-ecr-login@v1
+        with:
+          registry: github_actions_images
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+
+      - name: Build and Push Docker image
+        env:
+          ECR_REGISTRY: github_actions_images
+          IMAGE_TAG: latest
+        run: |
+          docker build -t $ECR_REGISTRY/my-docker-image:$IMAGE_TAG .
+          docker push $ECR_REGISTRY/my-docker-image:$IMAGE_TAG
           
               
  
