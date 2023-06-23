@@ -48,13 +48,13 @@ jobs:
             echo "CI pipeline failed"
             exit 1
           fi
-      - name: Archive artifacts
+      - name: Configure AWS credentials
         run: |
-          zip -r ${{ github.workspace }}/artifacts.zip ./codebase/rdicidr-0.1.0/
-
-      - name: Store artifacts
-        uses: actions/upload-artifact@v2
-        with:
-          name: built-files
-          path: ${{ github.workspace }}/artifacts.zip
+          aws configure set aws_access_key_id ${{ secrets.AWS_ACCESS_KEY }}
+          aws configure set aws_secret_access_key ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws configure set default.region us-east-1
+          
+      - name: Login to Amazon ECR
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v1
      
