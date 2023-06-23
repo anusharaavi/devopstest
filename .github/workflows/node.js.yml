@@ -38,6 +38,8 @@ jobs:
         working-directory: ./codebase/rdicidr-0.1.0/
       - run: npm run lint
         working-directory: ./codebase/rdicidr-0.1.0/
+      - run: npm install --save-dev prettier
+        working-directory: ./codebase/rdicidr-0.1.0/
       - run: npm run prettier
         working-directory: ./codebase/rdicidr-0.1.0/
       - run: npm CI=true run test
