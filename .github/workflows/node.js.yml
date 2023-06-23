@@ -50,7 +50,7 @@ jobs:
           fi
       - name: Archive artifacts
         run: |
-          zip -r ${{ github.workspace }}/artifacts.zip ./dist
+          zip -r ${{ github.workspace }}/artifacts.zip ./codebase/rdicidr-0.1.0/
 
       - name: Store artifacts
         uses: actions/upload-artifact@v2
