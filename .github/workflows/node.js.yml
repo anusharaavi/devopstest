@@ -50,11 +50,11 @@ jobs:
           fi
       - name: Archive artifacts
         run: |
-          zip -r artifacts.zip ./codebase/rdicidr-0.1.0/
-          mv artifacts.zip ${{ github.workspace }}/artifacts.zip
+          zip -r ${{ github.workspace }}/artifacts.zip ./dist
 
       - name: Store artifacts
         uses: actions/upload-artifact@v2
         with:
           name: built-files
-          path: ${{ github.workspace }}/artifacts.zip   
+          path: ${{ github.workspace }}/artifacts.zip
+     
