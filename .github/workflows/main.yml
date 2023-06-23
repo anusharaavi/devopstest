@@ -1,0 +1,23 @@
+name: Subsequent Workflow
+on:
+  pull_request:
+    branches:
+      - main
+  workflow_run:
+    workflows: ["CI Pipeline"]
+    types:
+      - completed
+
+jobs:
+  process_status:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Get pipeline status
+        id: get_status
+        run: |
+          echo "Pipeline status: ${{ github.event.workflow_run.outputs.pipeline_status }}"
+
+      # Additional steps based on the status, e.g., notifications, conditional actions, etc.
