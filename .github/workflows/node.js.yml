@@ -71,7 +71,7 @@ jobs:
           ECR_REGISTRY: '006678164789.dkr.ecr.us-east-1.amazonaws.com'
           IMAGE_TAG: latest
         run: |
-          cd ./codebase/rdicidr-0.1.0/
+          cd ./codebase/rdicidr-0.1.0/src
           docker build -t github_actions_images .
           docker tag github_actions_images:$IMAGE_TAG $ECR_REGISTRY/github_actions_images:$IMAGE_TAG
           docker push $ECR_REGISTRY/github_actions_images:$IMAGE_TAG
