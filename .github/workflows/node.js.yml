@@ -75,10 +75,5 @@ jobs:
           docker build -t github_actions_images .
           docker tag github_actions_images:$IMAGE_TAG $ECR_REGISTRY/github_actions_images:$IMAGE_TAG
           docker push $ECR_REGISTRY/github_actions_images:$IMAGE_TAG
-      
-      - name: Scan Docker image on ECR
-        run: |
-          aws ecr start-image-scan --repository-name github_actions_images --image-id 006678164789.dkr.ecr.us-east-1.amazonaws.com/github_actions_images:latest --image-tag latest --region us-east1
-          
-              
+  
  
