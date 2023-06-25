@@ -8,14 +8,12 @@ COPY package*.json ./
 
 RUN npm install
 
-<<<<<<< HEAD
 # Copy the rest of the application code to the container
 COPY . app.js
-=======
+
 USER node 
 
 COPY --chown=node:node . .
->>>>>>> a0b7243 (changes in Dockerfile)
 
 EXPOSE 3000
 
