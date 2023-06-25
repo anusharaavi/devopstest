@@ -19,11 +19,13 @@ jobs:
       - run: npm ci    
         working-directory: ./codebase/rdicidr-0.1.0/
       - run: npm run 
-      - run: rm -rf node_modules
+        working-directory: ./codebase/rdicidr-0.1.0/
       - run: npm install
         working-directory: ./codebase/rdicidr-0.1.0/
       - run: npm run lint
+        working-directory: ./codebase/rdicidr-0.1.0/
       - run: npm install --save-dev prettier
+        working-directory: ./codebase/rdicidr-0.1.0/
       - run: npm run prettier
       - run: CI=true npm run test
       - run: npm run build
