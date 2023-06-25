@@ -1,21 +1,22 @@
-# Use the desired base image for Node.js
 FROM node:15
 
-# Set the working directory inside the container
-WORKDIR /app
+RUN mkdir -p /home/node/app/node_modules && chown -R node:node /home/node/app
 
-# Copy package.json and package-lock.json to the container
+WORKDIR /home/node/app
+
 COPY package*.json ./
 
-# Install dependencies
 RUN npm install
 
+<<<<<<< HEAD
 # Copy the rest of the application code to the container
 COPY . app.js
+=======
+USER node 
 
-# Expose the desired port (replace 3000 with your application's port)
+COPY --chown=node:node . .
+>>>>>>> a0b7243 (changes in Dockerfile)
+
 EXPOSE 3000
 
-# Define the command to start your Node.js application
-CMD [ "node", "app.js" ]
-
+CMD ["npm","start"]
