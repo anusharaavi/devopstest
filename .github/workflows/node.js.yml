@@ -51,12 +51,12 @@ jobs:
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: 'us-east-1'
+          aws-region: 'us-west-1'
       - name: Login to Amazon ECR
         uses: aws-actions/amazon-ecr-login@v1
       - name: Build and Push Docker image
         env:
-          ECR_REGISTRY: '006678164789.dkr.ecr.us-east-1.amazonaws.com'
+          ECR_REGISTRY: '805724738913.dkr.ecr.us-west-1.amazonaws.com'
           IMAGE_TAG: latest
         run: |
           cd ./codebase/rdicidr-0.1.0
