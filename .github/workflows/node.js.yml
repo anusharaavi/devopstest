@@ -68,6 +68,28 @@ jobs:
           docker tag github_actions_images:$IMAGE_TAG ${{ secrets.ECR_REGISTRY }}/github_actions_images:$IMAGE_TAG
           docker push ${{ secrets.ECR_REGISTRY }}/github_actions_images:$IMAGE_TAG
           
-        
-  
+      - name: Update deployment and service YAML files
+        run: |
+           sed -i "s/ImageTag/${BUILD_NUMBER}/g" devopstest/codebase/rdicidr-0.1.0/manifest/deployment.yml        
+      - name: Create target directory
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git fetch
+          git branch target-branch origin/main
+          git checkout target-branch
+          mkdir -p codebase/rdicidr-0.1.0/manifest  # Update this with your desired target directory path
+          git add codebase/rdicidr-0.1.0/manifest
+
+      - name: Copy deployment.yml to target directory
+        run: |
+          git add codebase/rdicidr-0.1.0/manifest/deployment.yml
+
+      - name: Copy service.yml to target directory
+        run: |
+          git add codebase/rdicidr-0.1.0/manifest/service.yml
+
+      - name: Commit and push changes
+        run: |
+          git commit -m "Update deployment and service YAML files"
  
