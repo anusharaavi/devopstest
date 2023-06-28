@@ -6,9 +6,9 @@ sudo yum install -y conntrack curl
 
 # install docker
 
-sudo amazon-linux-extras install docker -y
-sudo service docker start
-sudo usermod -a -G docker ec2-user
+- sudo amazon-linux-extras install docker -y
+- sudo service docker start
+- sudo usermod -a -G docker ec2-user
 
 # install kubectl
 - sudo curl --silent --location -o /usr/local/bin/kubectl \
@@ -18,11 +18,11 @@ sudo usermod -a -G docker ec2-user
 - sudo chmod +x /usr/local/bin/kubectl
 
 # install & start minikube
-curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
-sudo install minikube-linux-amd64 /usr/local/bin/minikube
-minikube start --driver=docker
-kubectl version --short
-minikube status
+- curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+- sudo install minikube-linux-amd64 /usr/local/bin/minikube
+- minikube start --driver=docker
+- kubectl version --short
+- minikube status
 
 # EKS Insatallation
 You can follow same procedure in the official AWS document Getting started with Amazon EKS – eksctl installation
