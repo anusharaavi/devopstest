@@ -56,7 +56,7 @@ jobs:
         id: set-build-number
         run: echo "BUILD_NUMBER=${{ github.run_number }}" >> $GITHUB_ENV
       - name: Show build number
-        run: echo $BUILD_NUMBER
+        run: echo ${{ env.BUILD_NUMBER }}
       - name: Login to Amazon ECR
         uses: aws-actions/amazon-ecr-login@v1
       - name: Build and Push Docker image
