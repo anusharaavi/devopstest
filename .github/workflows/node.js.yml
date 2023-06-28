@@ -67,9 +67,7 @@ jobs:
           docker build -t github_actions_images:$IMAGE_TAG .
           docker tag github_actions_images:$IMAGE_TAG ${{ secrets.ECR_REGISTRY }}/github_actions_images:$IMAGE_TAG
           docker push ${{ secrets.ECR_REGISTRY }}/github_actions_images:$IMAGE_TAG
-  update-and-gitpush:
-    runs-on: ubuntu-latest
-    steps:
+
       - name: Checkout repository
         uses: actions/checkout@v2
       - name: checkout Repo and Update deployment and service YAML files
