@@ -20,3 +20,7 @@ sudo install minikube-linux-amd64 /usr/local/bin/minikube
 minikube start --driver=docker
 kubectl version --short
 minikube status
+
+You can follow same procedure in the official AWS document Getting started with Amazon EKS – eksctl installation
+https://docs.aws.amazon.com/eks/latest/userguide/getting-started-eksctl.html
+
