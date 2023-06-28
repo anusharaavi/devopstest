@@ -61,13 +61,12 @@ jobs:
         uses: aws-actions/amazon-ecr-login@v1
       - name: Build and Push Docker image
         env:
-          ECR_REGISTRY: '805724738913.dkr.ecr.us-east-1.amazonaws.com'
           IMAGE_TAG: ${{ env.BUILD_NUMBER }}
         run: |
           cd ./codebase/rdicidr-0.1.0
           docker build -t github_actions_images:$IMAGE_TAG .
-          docker tag github_actions_images:$IMAGE_TAG $ECR_REGISTRY/github_actions_images:$IMAGE_TAG
-          docker push $ECR_REGISTRY/github_actions_images:$IMAGE_TAG
+          docker tag github_actions_images:$IMAGE_TAG ${{ secrets.ECR_REGISTRY }}/github_actions_images:$IMAGE_TAG
+          docker push ${{ secrets.ECR_REGISTRY }}/github_actions_images:$IMAGE_TAG
           
         
   
