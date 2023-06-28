@@ -41,7 +41,7 @@ jobs:
             exit 1
           fi
   
-  build-and-push:
+  build-and-deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
