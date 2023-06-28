@@ -1,9 +1,11 @@
 sudo yum update -y
 
 #install dependencies
+
 sudo yum install -y conntrack curl
 
 #install docker
+
 sudo amazon-linux-extras install docker -y
 sudo service docker start
 sudo usermod -a -G docker ec2-user
