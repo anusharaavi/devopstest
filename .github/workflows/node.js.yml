@@ -67,7 +67,8 @@ jobs:
           docker build -t github_actions_images:$IMAGE_TAG .
           docker tag github_actions_images:$IMAGE_TAG ${{ secrets.ECR_REGISTRY }}/github_actions_images:$IMAGE_TAG
           docker push ${{ secrets.ECR_REGISTRY }}/github_actions_images:$IMAGE_TAG
-          
+      - name: Checkout repository
+        uses: actions/checkout@v2
       - name: Update deployment and service YAML files
         run: |
            sed -i "s/ImageTag/${BUILD_NUMBER}/g" devopstest/codebase/rdicidr-0.1.0/manifest/deployment.yml        
