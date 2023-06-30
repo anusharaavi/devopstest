@@ -16,11 +16,9 @@ jobs:
          node-version: 15.x
          npm-version: 7.x.X
 
-      - run: npm ci ./codebase/rdicidr-0.1.0/
-         
-      - run: npm run ./codebase/rdicidr-0.1.0/
-        
-      - run: npm install
+      - run: npm ci          
+             npm run
+             npm install
         working-directory: ./codebase/rdicidr-0.1.0/
       - run: npm run lint
         working-directory: ./codebase/rdicidr-0.1.0/
