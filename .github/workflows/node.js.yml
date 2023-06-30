@@ -16,10 +16,10 @@ jobs:
          node-version: 15.x
          npm-version: 7.x.X
 
-      - run: npm ci    
-        working-directory: ./codebase/rdicidr-0.1.0/
-      - run: npm run 
-        working-directory: ./codebase/rdicidr-0.1.0/
+      - run: npm ci ./codebase/rdicidr-0.1.0/
+         
+      - run: npm run ./codebase/rdicidr-0.1.0/
+        
       - run: npm install
         working-directory: ./codebase/rdicidr-0.1.0/
       - run: npm run lint
@@ -87,11 +87,7 @@ jobs:
         run: |
           git add codebase/rdicidr-0.1.0/manifest/deployment.yml
 
-      - name: Copy service.yml to target directory
-        run: |
-          git add codebase/rdicidr-0.1.0/manifest/service.yml
-
       - name: Commit and push changes
         run: |
           git commit -m "Update deployment and service YAML files"
- 
+     
