@@ -73,9 +73,7 @@ jobs:
           git fetch
           git branch target-branch origin/main
           git checkout target-branch
-          mkdir -p codebase/rdicidr-0.1.0/manifest  # Update this with your desired target directory path
-          git add codebase/rdicidr-0.1.0/manifest
-
+          mkdir -p codebase/rdicidr-0.1.0/manifest            
       - name: Copy deployment.yml to target directory
         run: |
           git add codebase/rdicidr-0.1.0/manifest/deployment.yml
