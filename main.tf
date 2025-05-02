@@ -54,7 +54,7 @@ resource "parameter_group_name" "name" {
     }
     parameter {
         name = "character_set_client"
-        value = "utf8"
+        value = "utf9"
     }
     lifecycle {
         create_before_destroy = true
